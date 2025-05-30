@@ -1,0 +1,61 @@
+2025-05-30 14:24:32:2432 [35mhttp[39m: [35mGET / 404 139 - 3.178 ms[39m
+[35m[39m
+2025-05-30 14:24:43:2443 [35mhttp[39m: [35mGET /health 200 15 - 1.431 ms[39m
+[35m[39m
+2025-05-30 14:24:44:2444 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 0.984 ms[39m
+[35m[39m
+2025-05-30 14:24:48:2448 [35mhttp[39m: [35mGET /transaction 404 150 - 0.296 ms[39m
+[35m[39m
+2025-05-30 14:25:08:258 [35mhttp[39m: [35mGET /api/v1/transaction 404 157 - 1.496 ms[39m
+[35m[39m
+2025-05-30 14:25:32:2532 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 24 - 0.773 ms[39m
+[35m[39m
+2025-05-30 14:34:33:3433 [35mhttp[39m: [35mGET /api/v1/transaction 404 157 - 2.256 ms[39m
+[35m[39m
+2025-05-30 14:35:14:3514 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 24 - 1.796 ms[39m
+[35m[39m
+2025-05-30 14:38:17:3817 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 0.581 ms[39m
+[35m[39m
+2025-05-30 14:38:19:3819 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 0.351 ms[39m
+[35m[39m
+2025-05-30 14:39:45:3945 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 2.148 ms[39m
+[35m[39m
+2025-05-30 14:39:47:3947 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 0.589 ms[39m
+[35m[39m
+2025-05-30 14:40:12:4012 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 0.416 ms[39m
+[35m[39m
+2025-05-30 14:41:44:4144 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 2.544 ms[39m
+[35m[39m
+2025-05-30 14:41:48:4148 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 6.410 ms[39m
+[35m[39m
+2025-05-30 14:42:58:4258 [32minfo[39m: [32m23[39m
+2025-05-30 14:42:58:4258 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 5.767 ms[39m
+[35m[39m
+2025-05-30 14:43:18:4318 [32minfo[39m: [32m{[39m
+[32m  userId: '23',[39m
+[32m  amount: 300,[39m
+[32m  category: 'transportation',[39m
+[32m  description: 'testing purpose'[39m
+[32m}[39m
+2025-05-30 14:43:18:4318 [35mhttp[39m: [35mPOST /api/v1/transaction 401 24 - 4.939 ms[39m
+[35m[39m
+2025-05-30 14:43:39:4339 [32minfo[39m: [32m{[39m
+[32m  userId: '23',[39m
+[32m  amount: 300,[39m
+[32m  category: 'transportation',[39m
+[32m  description: 'testing purpose'[39m
+[32m}[39m
+2025-05-30 14:43:39:4339 [35mhttp[39m: [35mPOST /api/v1/transaction 201 163 - 199.938 ms[39m
+[35m[39m
+2025-05-30 14:44:58:4458 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 24 - 1.062 ms[39m
+[35m[39m
+2025-05-30 14:45:47:4547 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 24 - 2.544 ms[39m
+[35m[39m
+2025-05-30 14:46:36:4636 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 24 - 0.651 ms[39m
+[35m[39m
+2025-05-30 14:47:28:4728 [32minfo[39m: [32m23[39m
+2025-05-30 14:47:28:4728 [35mhttp[39m: [35mGET /api/v1/transaction/23 401 33 - 5.177 ms[39m
+[35m[39m
+2025-05-30 14:49:22:4922 [32minfo[39m: [32m23[39m
+2025-05-30 14:49:22:4922 [35mhttp[39m: [35mGET /api/v1/transaction/23 200 165 - 177.170 ms[39m
+[35m[39m
