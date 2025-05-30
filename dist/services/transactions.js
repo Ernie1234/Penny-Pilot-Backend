@@ -21,7 +21,7 @@ const createTransaction = (transactionData) => __awaiter(void 0, void 0, void 0,
 exports.createTransaction = createTransaction;
 // Get transactions for specific user
 const getUserTransactions = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    return transaction_1.default.find({ userId }).sort({ date: -1 });
+    return transaction_1.default.find({ userId });
 });
 exports.getUserTransactions = getUserTransactions;
 // Admin function to get all transactions

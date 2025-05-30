@@ -12,7 +12,7 @@ export const createTransaction = async (transactionData: {
 
 // Get transactions for specific user
 export const getUserTransactions = async (userId: string) => {
-  return Transaction.find({ userId }).sort({ date: -1 });
+  return Transaction.find({ userId });
 };
 
 // Admin function to get all transactions

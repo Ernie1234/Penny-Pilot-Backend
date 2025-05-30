@@ -1,6 +1,7 @@
 // src/controllers/transactions.ts
 import { Request, Response } from "express";
 import * as TransactionService from "../services/transactions";
+import Logger from "../libs/logger";
 
 export const createTransaction = async (
   req: Request,
@@ -8,7 +9,8 @@ export const createTransaction = async (
 ): Promise<Response> => {
   try {
     const { userId } = req.body;
-    if (userId) {
+
+    if (!userId) {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
@@ -28,8 +30,9 @@ export const getTransactions = async (
 ): Promise<Response> => {
   try {
     const { userId } = req.params;
-    if (userId) {
-      return res.status(401).json({ error: "Unauthorized" });
+
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized!" });
     }
 
     const transactions = await TransactionService.getUserTransactions(userId);

@@ -22,7 +22,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log("✅ Database connected successfully");
         // 2. Start Express Server
         const server = app_1.default.listen(envConfig_1.default.PORT, () => {
-            console.log(`🚀 Server running on port ${envConfig_1.default.PORT}`);
+            console.log(`🚀 Server running on port:  http://localhost:${envConfig_1.default.PORT}`);
             console.log(`🌐 Environment: ${envConfig_1.default.NODE_ENV}`);
         });
         // 3. Handle graceful shutdown

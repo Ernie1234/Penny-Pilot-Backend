@@ -47,7 +47,7 @@ const TransactionService = __importStar(require("../services/transactions"));
 const createTransaction = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userId } = req.body;
-        if (userId) {
+        if (!userId) {
             return res.status(401).json({ error: "Unauthorized" });
         }
         const transaction = yield TransactionService.createTransaction(Object.assign({ userId }, req.body));
@@ -61,8 +61,8 @@ exports.createTransaction = createTransaction;
 const getTransactions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userId } = req.params;
-        if (userId) {
-            return res.status(401).json({ error: "Unauthorized" });
+        if (!userId) {
+            return res.status(401).json({ error: "Unauthorized!" });
         }
         const transactions = yield TransactionService.getUserTransactions(userId);
         return res.json(transactions);
