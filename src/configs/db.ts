@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import env from "./envConfig";
+import Logger from "../libs/logger";
 
 let isConnected = false;
 
 export const connectDB = async () => {
   if (isConnected) {
-    console.log("Using existing database connection");
+    Logger.info("Using existing database connection");
     return;
   }
 
@@ -16,9 +17,9 @@ export const connectDB = async () => {
     });
 
     isConnected = true;
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    Logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error("MongoDB connection error:", error);
+    Logger.error("MongoDB connection error:", error);
     throw error;
   }
 };
@@ -27,13 +28,13 @@ export const disconnectDB = async () => {
   if (isConnected) {
     await mongoose.disconnect();
     isConnected = false;
-    console.log("MongoDB disconnected");
+    Logger.info("MongoDB disconnected");
   }
 };
 
 // Optional: Auto-reconnect on connection loss
 mongoose.connection.on("disconnected", () => {
   isConnected = false;
-  console.log("MongoDB disconnected - attempting to reconnect...");
+  Logger.info("MongoDB disconnected - attempting to reconnect...");
   setTimeout(connectDB, 3000);
 });

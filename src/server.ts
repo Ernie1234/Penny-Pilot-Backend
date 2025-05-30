@@ -2,38 +2,39 @@ import app from "./app";
 import env from "./configs/envConfig";
 import { connectDB, disconnectDB } from "./configs/db";
 import { startKeepAlive, stopKeepAlive } from "./libs/cron";
+import Logger from "./libs/logger";
 
 const startServer = async () => {
   try {
     // 1. Connect to Database
     await connectDB();
-    console.log("✅ Database connected successfully");
+    Logger.info("✅ Database connected successfully");
 
     // Start the keep-alive job
     startKeepAlive();
 
     // 2. Start Express Server
     const server = app.listen(env.PORT, () => {
-      console.log(`🚀 Server running on port:  http://localhost:${env.PORT}`);
-      console.log(`🌐 Environment: ${env.NODE_ENV}`);
+      Logger.info(`🚀 Server running on port:  http://localhost:${env.PORT}`);
+      Logger.info(`🌐 Environment: ${env.NODE_ENV}`);
     });
 
     // 3. Handle graceful shutdown
     const shutdown = async () => {
-      console.log("🛑 Shutting down server...");
+      Logger.info("🛑 Shutting down server...");
 
       // Stop the keep-alive job
       stopKeepAlive();
 
       server.close(async () => {
         await disconnectDB();
-        console.log("🔌 Database connection closed");
+        Logger.info("🔌 Database connection closed");
         process.exit(0);
       });
 
       // Force close if hanging
       setTimeout(() => {
-        console.error("⚠️ Forcing shutdown...");
+        Logger.error("⚠️ Forcing shutdown...");
         process.exit(1);
       }, 5000);
     };
@@ -41,7 +42,7 @@ const startServer = async () => {
     process.on("SIGTERM", shutdown);
     process.on("SIGINT", shutdown);
   } catch (err) {
-    console.error("❌ Failed to start server:", err);
+    Logger.error("❌ Failed to start server:", err);
     await disconnectDB();
     process.exit(1);
   }
