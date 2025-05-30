@@ -1,31 +1,32 @@
-import cron from "cron";
+// @libs/cron.ts
+import cron from "node-cron";
 import https from "https";
-
 import env from "../configs/envConfig";
 
-const job = new cron.CronJob("*/14 * * * *", function () {
+const keepAliveJob = cron.schedule("*/14 * * * *", () => {
+  console.log("Running keep-alive ping...");
   https
     .get(env.API_URL, (res) => {
-      if (res.statusCode === 200) console.log("GET request sent successfully");
-      else console.log("GET request failed", res.statusCode);
+      if (res.statusCode === 200) {
+        console.log("✅ Keep-alive ping successful");
+      } else {
+        console.log("⚠️ Keep-alive ping failed", res.statusCode);
+      }
     })
-    .on("error", (e) => console.error("Error while sending request", e));
+    .on("error", (e) => {
+      console.error("❌ Keep-alive ping error:", e.message);
+    });
 });
 
-export default job;
+// Export both the job and a function to start/stop it
+export const startKeepAlive = () => {
+  keepAliveJob.start();
+  console.log("🔄 Keep-alive job started");
+};
 
-// CRON JOB EXPLANATION:
-// Cron jobs are scheduled tasks that run periodically at fixed intervals
-// we want to send 1 GET request for every 14 minutes
+export const stopKeepAlive = () => {
+  keepAliveJob.stop();
+  console.log("🛑 Keep-alive job stopped");
+};
 
-// How to define a "Schedule"?
-// You define a schedule using a cron expression, which consists of 5 fields representing:
-
-//! MINUTE, HOUR, DAY OF THE MONTH, MONTH, DAY OF THE WEEK
-
-//? EXAMPLES && EXPLANATION:
-//* 14 * * * * - Every 14 minutes
-//* 0 0 * * 0 - At midnight on every Sunday
-//* 30 3 15 * * - At 3:30 AM, on the 15th of every month
-//* 0 0 1 1 * - At midnight, on January 1st
-//* 0 * * * * - Every hour
+export default keepAliveJob;

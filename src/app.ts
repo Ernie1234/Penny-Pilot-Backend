@@ -5,7 +5,6 @@ import helmet from "helmet";
 import env from "./configs/envConfig";
 import apiRoutes from "./routes/index";
 import morganMiddleware from "./middlewares/morgan-middleware";
-import job from "@libs/cron";
 
 const app = express();
 
@@ -22,7 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morganMiddleware);
 
 // Routes
-
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK" });
 });

@@ -1,12 +1,16 @@
 import app from "./app";
 import env from "./configs/envConfig";
 import { connectDB, disconnectDB } from "./configs/db";
+import { startKeepAlive, stopKeepAlive } from "./libs/cron";
 
 const startServer = async () => {
   try {
     // 1. Connect to Database
     await connectDB();
     console.log("✅ Database connected successfully");
+
+    // Start the keep-alive job
+    startKeepAlive();
 
     // 2. Start Express Server
     const server = app.listen(env.PORT, () => {
@@ -17,6 +21,9 @@ const startServer = async () => {
     // 3. Handle graceful shutdown
     const shutdown = async () => {
       console.log("🛑 Shutting down server...");
+
+      // Stop the keep-alive job
+      stopKeepAlive();
 
       server.close(async () => {
         await disconnectDB();
