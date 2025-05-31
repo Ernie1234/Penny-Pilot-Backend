@@ -1,7 +1,6 @@
 // src/controllers/transactions.ts
 import { Request, Response } from "express";
 import * as TransactionService from "../services/transactions";
-import Logger from "../libs/logger";
 
 export const createTransaction = async (
   req: Request,

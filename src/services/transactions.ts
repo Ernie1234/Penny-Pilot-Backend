@@ -2,6 +2,7 @@ import Transaction from "../models/transaction";
 
 // Create new transaction
 export const createTransaction = async (transactionData: {
+  title: string;
   userId: string;
   amount: number;
   description: string;
